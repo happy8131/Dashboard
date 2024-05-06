@@ -3,12 +3,16 @@ import { Box, Grid, Paper } from "@mui/material";
 import scss from "./Dashboard.module.scss";
 import DataRibbon from "@/components/Dashboard/DataRibbon";
 import TransactionsPerDay from "@/components/Dashboard/TransactionsPerDay";
-//dd
+import TransactionBottomRow from "@/components/Dashboard/TransactionBottomRow";
+
 const Dashboard = () => {
   return (
     <Box>
-      <DataRibbon />
-      <TransactionsPerDay />
+      <Grid container gap={4} marginTop={2}>
+        <DataRibbon />
+        <TransactionsPerDay />
+      </Grid>
+      <TransactionBottomRow />
     </Box>
   );
 };
