@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from "react";
 import { Chart, registerables } from "chart.js";
 import { darkOptions } from "@/components/DataChart/Themes";
