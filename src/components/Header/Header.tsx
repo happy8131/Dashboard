@@ -128,7 +128,7 @@ const Header = (props: HeaderProps) => {
               textDecoration: "none",
             }}
           >
-            DataSoft
+            데이터 정보
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
