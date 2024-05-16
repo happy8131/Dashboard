@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, useTheme } from "@mui/material";
 import { SessionProvider } from "next-auth/react";
