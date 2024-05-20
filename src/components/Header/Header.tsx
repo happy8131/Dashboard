@@ -8,13 +8,14 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+import NextLink from "next/link";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { signOut, signIn, useSession } from "next-auth/react";
 import ThemeToggleButton from "../ThemeToggleButton";
 import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/system";
 
 const pages = ["Products", "Pricing", "Blog"];
 
@@ -25,6 +26,7 @@ export type HeaderProps = {
 const Header = (props: HeaderProps) => {
   const { ColorModeContext } = props;
   const { data: session } = useSession();
+  const theme = useTheme();
   const userProfileImg = session?.user?.image as string;
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -53,7 +55,7 @@ const Header = (props: HeaderProps) => {
   // @ts-ignore
   // @ts-ignore
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ marginBottom: "40px" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -72,45 +74,8 @@ const Header = (props: HeaderProps) => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            DataSoft
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
@@ -128,21 +93,10 @@ const Header = (props: HeaderProps) => {
               textDecoration: "none",
             }}
           >
-            데이터 정보
+            DataSoft
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
           {tabletCheck && (
-            <Box sx={{ paddingRight: 5 }}>
+            <Box sx={{ paddingRight: 5, marginLeft: "auto" }}>
               <Typography>Signed in as {session?.user?.email}</Typography>
             </Box>
           )}
@@ -172,6 +126,17 @@ const Header = (props: HeaderProps) => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+              <MenuItem>
+                <NextLink
+                  href={"/dashboard/profile"}
+                  style={{
+                    color: theme.palette.text.primary,
+                    textDecoration: "none",
+                  }}
+                >
+                  <Typography textAlign="center">Profile</Typography>
+                </NextLink>
+              </MenuItem>
               <MenuItem onClick={() => (session ? signOut() : signIn())}>
                 <Typography textAlign="center">
                   {session ? "Logout" : "Login"}
