@@ -36,6 +36,7 @@ const Profile = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    //
     console.log(formData); // Submit form data to server here
   };
   return (
