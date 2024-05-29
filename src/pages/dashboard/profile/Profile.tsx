@@ -13,7 +13,8 @@ import {
 } from "@mui/material";
 
 const Profile = () => {
-  const { data: session } = useSession();
+  const { data: session }: any = useSession();
+
   const names = session.user.name.split(" ");
   const firstName = names[0];
   const lastName = names.length > 1 ? names[names.length - 1] : "";
