@@ -1,7 +1,7 @@
 import React from "react";
 
 const SignOut = () => {
-  return <h1>You just signed out</h1>;
+  return <h1>로그아웃</h1>;
 };
 
 export default SignOut;
