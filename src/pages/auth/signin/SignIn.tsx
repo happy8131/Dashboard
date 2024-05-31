@@ -15,7 +15,7 @@ const SignIn = () => {
         alignItems: "center",
       }}
     >
-      <h2>{session ? "Thank you for logging in" : "Please log in"}</h2>
+      <h2>{session ? "감사합니다." : "로그인이 필요합니다."}</h2>
       <Login />
     </Box>
   );
